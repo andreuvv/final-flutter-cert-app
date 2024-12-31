@@ -12,7 +12,10 @@ class BooksListPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => BooksAppBloc(bookService)..add(FetchBooksEvent()),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Books')),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Books List'),
+        ),
         body: BlocBuilder<BooksAppBloc, BooksState>(
           builder: (context, state) {
             if (state is BooksLoading) {

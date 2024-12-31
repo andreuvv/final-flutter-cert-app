@@ -3,7 +3,7 @@ class BookModel {
   final String author;
   final String coverArt;
   final String description;
-  final bool isFavourite;
+  final bool favourite;
   final bool isReading;
   final int id;
   final num rating;
@@ -16,7 +16,7 @@ class BookModel {
     required this.author,
     required this.coverArt,
     required this.description,
-    required this.isFavourite,
+    required this.favourite,
     required this.isReading,
     required this.id,
     required this.rating,
@@ -32,7 +32,7 @@ class BookModel {
       author: data['author'],
       coverArt: data['coverArt'],
       description: data['description'],
-      isFavourite: data['isFavourite'],
+      favourite: data['favourite'],
       isReading: data['isReading'],
       rating: data['rating'],
       price: data['price'],
@@ -48,7 +48,7 @@ class BookModel {
       'author': author,
       'coverArt': coverArt,
       'description': description,
-      'isFavourite': isFavourite,
+      'isFavourite': favourite,
       'isReading': isReading,
       'rating': rating,
       'price': price,
