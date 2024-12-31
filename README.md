@@ -1,3 +1,3 @@
 # flutter_cert_final
 
-A new Flutter project.
+App project for flutter certification at DL.
