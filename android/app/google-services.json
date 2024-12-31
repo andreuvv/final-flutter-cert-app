@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "92648324189",
+    "firebase_url": "https://flutter-cert-11f7d-default-rtdb.firebaseio.com",
+    "project_id": "flutter-cert-11f7d",
+    "storage_bucket": "flutter-cert-11f7d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92648324189:android:3b23eec942eb6174bd61b4",
+        "android_client_info": {
+          "package_name": "com.flutt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCybdn1jKVsV5OJN--iwEu6lxtM7VXCKD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
