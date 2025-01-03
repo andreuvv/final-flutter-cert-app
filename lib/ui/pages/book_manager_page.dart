@@ -31,23 +31,58 @@ class BookManagerPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const AddBookPage()),
                 );
               },
-              child: const Text('Add New Book'),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 14.0,
+                  horizontal: 24.0,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.orange,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: const Text(
+                  'Add New Book',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const EditBooksPage()),
                 );
               },
-              child: const Text('Edit Books'),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 14.0,
+                  horizontal: 24.0,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.orange,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: const Text(
+                  'Edit Books',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
