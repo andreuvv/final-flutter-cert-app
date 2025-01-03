@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cert_final/ui/local_widgets/bottom_navbar_widget.dart';
 import 'package:flutter_cert_final/ui/local_widgets/currently_reading_book_widget.dart';
+import 'package:flutter_cert_final/ui/local_widgets/geometric_pattern_painter.dart';
 import 'package:flutter_cert_final/ui/local_widgets/search_bar_widget.dart';
 import 'package:flutter_cert_final/ui/local_widgets/trending_books_widget.dart';
 import 'package:flutter_cert_final/ui/pages/book_manager_page.dart';
@@ -104,40 +105,46 @@ class HomePage extends StatelessWidget {
                     ),
                     color: AppColors.teal,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 4),
-                        Icon(
-                          Icons.drag_handle_rounded,
-                          color: Colors.white.withOpacity(0.8),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Continue Reading',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white.withOpacity(0.8),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: null,
-                              icon: Icon(
-                                Icons.more_horiz,
-                                color: Colors.white.withOpacity(0.8),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 4),
-                        const CurrentlyReadingBook(),
-                      ],
+                  child: Stack(children: [
+                    CustomPaint(
+                      size: Size(double.infinity, screenHeight * 0.35),
+                      painter: GeometricPatternPainter(),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 4),
+                          Icon(
+                            Icons.drag_handle_rounded,
+                            color: Colors.white.withOpacity(0.8),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Continue Reading',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.more_horiz,
+                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 4),
+                          const CurrentlyReadingBook(),
+                        ],
+                      ),
+                    ),
+                  ]),
                 ),
                 const Positioned(
                   bottom: 0,

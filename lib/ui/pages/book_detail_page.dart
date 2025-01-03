@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cert_final/models/book_model.dart';
 import 'package:flutter_cert_final/utils/app_colors.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BookDetailPage extends StatelessWidget {
   final BookModel book;
@@ -33,7 +34,15 @@ class BookDetailPage extends StatelessWidget {
               Icons.share,
               color: AppColors.teal,
             ),
-            onPressed: () {},
+            onPressed: () {
+              final String bookInfo = 'Check out this book: ${book.title} by ${book.author}\n\n'
+                  'Price: \$${book.price}\n'
+                  'Rating: ${book.rating}\n'
+                  'Pages: ${book.pageNumbers}\n'
+                  'Language: ${book.language}\n\n'
+                  '${book.description}';
+              Share.share(bookInfo);
+            },
           ),
         ],
       ),

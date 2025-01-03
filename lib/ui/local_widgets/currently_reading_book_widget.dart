@@ -91,7 +91,7 @@ class CurrentlyReadingBook extends StatelessWidget {
             ),
           );
         }
-        return const Center(child: Text('No books found.'));
+        return const Center(child: Text('No books currently on read. Try starting a new book.'));
       },
     );
   }
