@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cert_final/bloc/books_app_bloc.dart';
+import 'package:flutter_cert_final/ui/pages/book_detail_page.dart';
 
 class TrendingBooksWidget extends StatelessWidget {
   const TrendingBooksWidget({super.key});
@@ -22,50 +23,60 @@ class TrendingBooksWidget extends StatelessWidget {
             itemCount: randomBooks.length,
             itemBuilder: (context, index, realIndex) {
               final book = randomBooks[index];
-              return Container(
-                margin: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 200,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          book.coverArt,
-                          //fit: BoxFit.contain,
-                          width: double.infinity,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookDetailPage(book: book),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 200,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            book.coverArt,
+                            //fit: BoxFit.contain,
+                            width: double.infinity,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      "by ${book.author}",
-                      style: const TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
+                      const SizedBox(height: 12),
+                      Text(
+                        "by ${book.author}",
+                        style: const TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(
-                      book.title,
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
+                      const SizedBox(height: 4.0),
+                      Text(
+                        book.title,
+                        style: const TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
             options: CarouselOptions(
-              height: 400.0,
+              height: 300.0,
               //enlargeCenterPage: true,
               autoPlay: true,
               autoPlayCurve: Curves.fastOutSlowIn,
