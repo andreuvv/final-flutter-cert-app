@@ -28,7 +28,7 @@ class FinalFlutterCertApp extends StatelessWidget {
         ),
       ],
       child: const MaterialApp(
-        title: 'Firebase Books Project',
+        title: 'Firebase eBooks Project',
         home: HomePage(),
       ),
     );
