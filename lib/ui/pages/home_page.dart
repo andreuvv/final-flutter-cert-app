@@ -7,6 +7,7 @@ import 'package:flutter_cert_final/ui/local_widgets/trending_books_widget.dart';
 import 'package:flutter_cert_final/ui/pages/book_manager_page.dart';
 import 'package:flutter_cert_final/ui/pages/books_list_page.dart';
 import 'package:flutter_cert_final/utils/app_colors.dart';
+import 'package:flutter_cert_final/utils/page_route_transitions.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,9 +28,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const BookManagerPage(),
-              ),
+              fadeTransitionRoute(const BookManagerPage()),
             );
           },
         ),
@@ -80,9 +79,7 @@ class HomePage extends StatelessWidget {
                         ),
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) => BooksListPage(),
-                          ),
+                          fadeTransitionRoute(BooksListPage()),
                         ),
                       ),
                     ],

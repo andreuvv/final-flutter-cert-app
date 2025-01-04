@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cert_final/bloc/books_app_bloc.dart';
+import 'package:flutter_cert_final/bloc/navigation_bloc.dart';
 import 'package:flutter_cert_final/services/book_list_service.dart';
+import 'package:flutter_cert_final/ui/pages/bookmarks_page.dart';
 import 'package:flutter_cert_final/ui/pages/home_page.dart';
+import 'package:flutter_cert_final/ui/pages/reading_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,10 +29,18 @@ class FinalFlutterCertApp extends StatelessWidget {
         BlocProvider(
           create: (context) => BooksAppBloc(BookListService())..add(FetchBooksEvent()),
         ),
+        BlocProvider(
+          create: (context) => NavigationBloc(),
+        ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Firebase eBooks Project',
-        home: HomePage(),
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => const HomePage(),
+          '/reading': (context) => const ReadingPage(),
+          '/bookmarks': (context) => const BookmarksPage(),
+        },
       ),
     );
   }
