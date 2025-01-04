@@ -5,7 +5,7 @@ class BookModel {
   final String description;
   final bool favourite;
   final bool isReading;
-  final int id;
+  final num id;
   final num rating;
   final num price;
   final num pageNumbers;
@@ -48,12 +48,28 @@ class BookModel {
       'author': author,
       'coverArt': coverArt,
       'description': description,
-      'isFavourite': favourite,
+      'favourite': favourite,
       'isReading': isReading,
       'rating': rating,
       'price': price,
       'pageNumbers': pageNumbers,
       'language': language,
     };
+  }
+
+  BookModel copyWith({bool? favourite, bool? isReading, required num id}) {
+    return BookModel(
+      title: title,
+      author: author,
+      coverArt: coverArt,
+      description: description,
+      favourite: favourite ?? this.favourite,
+      isReading: isReading ?? this.isReading,
+      id: id,
+      rating: rating,
+      price: price,
+      pageNumbers: pageNumbers,
+      language: language,
+    );
   }
 }

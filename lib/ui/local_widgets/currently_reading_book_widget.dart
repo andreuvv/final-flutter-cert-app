@@ -23,6 +23,7 @@ class CurrentlyReadingBook extends StatelessWidget {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is BooksLoaded) {
           final books = state.books.where((book) => book.isReading).toList();
+          final randomBook = books[Random().nextInt(books.length)];
 
           return Container(
             padding: const EdgeInsets.all(8),
@@ -35,33 +36,36 @@ class CurrentlyReadingBook extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    books[0].coverArt,
+                    randomBook.coverArt,
                     height: 70,
                     fit: BoxFit.contain,
                   ),
                 ),
                 const SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      books[0].title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        randomBook.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    Text(
-                      books[0].author,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w700,
+                      Text(
+                        randomBook.author,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 SizedBox(
                   height: 50,
                   width: 50,
