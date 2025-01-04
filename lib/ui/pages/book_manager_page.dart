@@ -128,6 +128,9 @@ class BookManagerPage extends StatelessWidget {
                                             onPressed: () {
                                               context.read<BooksAppBloc>().add(DeleteBookEvent(book));
                                               Navigator.of(context).pop();
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(content: Text('Book deleted')),
+                                              );
                                             },
                                             style: TextButton.styleFrom(
                                               foregroundColor: Colors.red,

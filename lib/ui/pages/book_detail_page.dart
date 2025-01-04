@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cert_final/bloc/books_app_bloc.dart';
+import 'package:flutter_cert_final/bloc/shopping_cart_bloc.dart';
 import 'package:flutter_cert_final/models/book_model.dart';
+import 'package:flutter_cert_final/ui/local_widgets/quantity_selector_widget.dart';
 import 'package:flutter_cert_final/utils/app_colors.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -12,6 +14,7 @@ class BookDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int selectedQuantity = 1;
     return Scaffold(
       backgroundColor: AppColors.grey50,
       appBar: AppBar(
@@ -232,48 +235,22 @@ class BookDetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      'QTY',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                    Container(
-                                      height: 24,
-                                      width: 1,
-                                      color: Colors.grey[300],
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.remove),
-                                      onPressed: () {},
-                                    ),
-                                    const Text(
-                                      '1',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.teal,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.add),
-                                      onPressed: () {},
-                                    ),
-                                  ],
-                                ),
+                              child: QuantitySelector(
+                                onQuantityChanged: (quantity) {
+                                  selectedQuantity = quantity;
+                                },
                               ),
                             ),
                             const SizedBox(width: 12.0),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                for (int i = 0; i < selectedQuantity; i++) {
+                                  context.read<ShoppingCartBloc>().add(AddToCartEvent(updatedBook));
+                                }
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('$selectedQuantity book(s) added to cart')),
+                                );
+                              },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14.0,
