@@ -57,7 +57,11 @@ class BookModel {
     };
   }
 
-  BookModel copyWith({bool? favourite, bool? isReading, required num id}) {
+  BookModel copyWith({
+    bool? favourite,
+    bool? isReading,
+    required num id,
+  }) {
     return BookModel(
       title: title,
       author: author,
@@ -70,6 +74,34 @@ class BookModel {
       price: price,
       pageNumbers: pageNumbers,
       language: language,
+    );
+  }
+
+  BookModel copyWithUpdateBook({
+    String? title,
+    String? author,
+    String? coverArt,
+    String? description,
+    num? rating,
+    num? price,
+    num? pageNumbers,
+    String? language,
+    bool? favourite,
+    bool? isReading,
+    required num id,
+  }) {
+    return BookModel(
+      title: title ?? this.title,
+      author: author ?? this.author,
+      coverArt: coverArt ?? this.coverArt,
+      description: description ?? this.description,
+      favourite: favourite ?? this.favourite,
+      isReading: isReading ?? this.isReading,
+      id: id,
+      rating: rating ?? this.rating,
+      price: price ?? this.price,
+      pageNumbers: pageNumbers ?? this.pageNumbers,
+      language: language ?? this.language,
     );
   }
 }

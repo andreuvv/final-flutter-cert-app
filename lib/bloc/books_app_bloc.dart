@@ -18,8 +18,8 @@ class UpdateBookEvent extends BooksEvent {
 }
 
 class DeleteBookEvent extends BooksEvent {
-  final int bookId;
-  DeleteBookEvent(this.bookId);
+  final BookModel book;
+  DeleteBookEvent(this.book);
 }
 
 /// States
@@ -76,7 +76,7 @@ class BooksAppBloc extends Bloc<BooksEvent, BooksState> {
 
     on<DeleteBookEvent>((event, emit) async {
       try {
-        await bookService.deleteBook(event.bookId);
+        await bookService.deleteBook(event.book);
         final books = await bookService.fetchBooks();
         emit(BooksLoaded(books));
       } catch (e) {
